@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Repositories\Interfaces\PaperRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
+use App\Repositories\PaperRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Support\ServiceProvider;
 use function Symfony\Component\String\u;
@@ -18,10 +20,12 @@ class AppServiceProvider extends ServiceProvider
     {
         $interfaces = [
             UserRepositoryInterface::class,
+            PaperRepositoryInterface::class,
         ];
 
         $implementations = [
             UserRepository::class,
+            PaperRepository::class,
         ];
 
         for ($i = 0; $i < count($interfaces); $i++) {

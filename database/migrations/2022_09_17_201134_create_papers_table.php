@@ -17,8 +17,8 @@ class CreatePapersTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->string('name');
-            $table->string('author');
-            $table->year('year');
+            $table->string('author')->nullable();
+            $table->year('year')->nullable();
             $table->string('file');
             $table->timestamps();
 

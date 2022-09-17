@@ -24,3 +24,5 @@ Route::get('users/{user_id}',[\App\Http\Controllers\Api\UserController::class, '
 Route::put('users/password', [\App\Http\Controllers\Api\UserController::class, 'changePassowrd']);
 Route::post('users', [\App\Http\Controllers\Api\UserController::class, 'createUser']);
 
+//papers
+Route::post('papers', [\App\Http\Controllers\Api\PaperController::class, 'storePapers']);
