@@ -7,10 +7,11 @@ use App\Models\Paper;
 use App\Models\User;
 use App\Repositories\Interfaces\PaperRepositoryInterface;
 use Carbon\Carbon;
+use Illuminate\Http\UploadedFile;
 
 class PaperRepository implements PaperRepositoryInterface
 {
-    public function store(array $request){
+    public function store(array $request, ?UploadedFile $file){
         $newPaper = new Paper();
 
         $user = User::findOrFail($request['user_id']);
@@ -20,29 +21,14 @@ class PaperRepository implements PaperRepositoryInterface
         $newPaper->author = $request['author'];
         $newPaper->year = Carbon::parse($request['year'])->setTimezone('Asia/Dhaka')->year;
 
-
-        error_log($request['file']);
         $location = public_path('/files/user/' . $user->id .'/'. $request['name']);
 
-        $request['file']->move(public_path('/files/users'.$user->id), $request['file']);
-//        $request['file']->store(public_path('/files/users'.$user->id), $request['file']);
-        error_log("ashci");
+        $file->move(public_path('/files/users'.$user->id), $request['file'].'.pdf');
 
         $newPaper->file = $location;
         $newPaper->save();
 
         return $newPaper;
 
-
-//        if ($request['photo']) {
-//            if($request['photo']  != $client->photo) {
-//                $filename = random_string(5) . time() . '.' . explode(';', explode('/', $request['photo'])[1])[0];
-//                $location = public_path('/images/clients/' . $filename);
-//
-//                Image::make($request['photo'])->save($location);
-//                $client->photo = $filename;
-//            }
-//
-//        }
     }
 }
