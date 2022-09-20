@@ -30,3 +30,7 @@ Route::post('papers', [\App\Http\Controllers\Api\PaperController::class, 'storeP
 //folder
 Route::get('folders/{folder_id}', [\App\Http\Controllers\Api\FolderController::class, 'getEverythingOfFolder']);
 Route::post('folders', [\App\Http\Controllers\Api\FolderController::class, 'createFolder']);
+
+//notes
+Route::post('notes', [\App\Http\Controllers\Api\NoteController::class, 'createNote']);
+Route::get('papers/{paper_id}/notes', [\App\Http\Controllers\Api\NoteController::class, 'getNotesOfSinglePaper']);

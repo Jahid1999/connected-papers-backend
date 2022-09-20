@@ -4,8 +4,10 @@ namespace App\Providers;
 
 use App\Repositories\FolderRepository;
 use App\Repositories\Interfaces\FolderRepositoryInterface;
+use App\Repositories\Interfaces\NoteRepositoryInterface;
 use App\Repositories\Interfaces\PaperRepositoryInterface;
 use App\Repositories\Interfaces\UserRepositoryInterface;
+use App\Repositories\NoteRepository;
 use App\Repositories\PaperRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Support\ServiceProvider;
@@ -24,12 +26,14 @@ class AppServiceProvider extends ServiceProvider
             UserRepositoryInterface::class,
             PaperRepositoryInterface::class,
             FolderRepositoryInterface::class,
+            NoteRepositoryInterface::class,
         ];
 
         $implementations = [
             UserRepository::class,
             PaperRepository::class,
             FolderRepository::class,
+            NoteRepository::class,
         ];
 
         for ($i = 0; $i < count($interfaces); $i++) {
