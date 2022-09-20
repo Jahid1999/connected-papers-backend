@@ -16,6 +16,7 @@ class CreatePapersTable extends Migration
         Schema::create('papers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('folder_id');
             $table->string('name');
             $table->string('author')->nullable();
             $table->year('year')->nullable();
@@ -23,6 +24,7 @@ class CreatePapersTable extends Migration
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('folder_id')->references('id')->on('folders');
         });
     }
 
