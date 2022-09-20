@@ -32,5 +32,8 @@ Route::get('folders/{folder_id}', [\App\Http\Controllers\Api\FolderController::c
 Route::post('folders', [\App\Http\Controllers\Api\FolderController::class, 'createFolder']);
 
 //notes
-Route::post('notes', [\App\Http\Controllers\Api\NoteController::class, 'createNote']);
 Route::get('papers/{paper_id}/notes', [\App\Http\Controllers\Api\NoteController::class, 'getNotesOfSinglePaper']);
+Route::put('notes', [\App\Http\Controllers\Api\NoteController::class, 'updateNote']);
+Route::post('notes', [\App\Http\Controllers\Api\NoteController::class, 'createNote']);
+Route::delete('delete/notes/{note_id}', [\App\Http\Controllers\Api\NoteController::class, 'deleteNote']);
+

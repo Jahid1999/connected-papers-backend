@@ -34,4 +34,24 @@ class NoteRepository implements NoteRepositoryInterface
 
         return $notes;
     }
+
+    public function update(array $request)
+    {
+        // TODO: Implement update() method.
+
+        $note = Note::findOrFail($request['id']);
+
+        $note->note = $request['note'];
+        $note->save();
+        return $note;
+    }
+
+    public function deleteNote($note_id)
+    {
+        // TODO: Implement deleteNote() method.
+        $note = Note::findOrFail($note_id);
+        $note->delete();
+
+        return "Note Deleted Successfully!";
+    }
 }
