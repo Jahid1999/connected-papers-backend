@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Paper;
+namespace App\Http\Requests\Folder;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreatePaperRequest extends FormRequest
+class CreateFolderRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,11 +25,8 @@ class CreatePaperRequest extends FormRequest
     {
         return [
             'user_id' => 'required',
-            'folder_id' => 'required',
             'name' => 'required',
-            'author' => 'sometimes',
-            'year' => 'sometimes',
-            'file' => 'required',
+            'parent_id' => 'sometimes',
         ];
     }
 }

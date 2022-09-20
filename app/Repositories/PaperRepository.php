@@ -15,9 +15,23 @@ class PaperRepository implements PaperRepositoryInterface
 
         $user = User::findOrFail($request['user_id']);
         $newPaper->user_id = $user->id;
+        $newPaper->folder_id = $request['folder_id'];
         $newPaper->name = $request['name'];
         $newPaper->author = $request['author'];
         $newPaper->year = Carbon::parse($request['year'])->setTimezone('Asia/Dhaka')->year;
+
+
+        error_log($request['file']);
+        $location = public_path('/files/user/' . $user->id .'/'. $request['name']);
+
+        $request['file']->move(public_path('/files/users'.$user->id), $request['file']);
+//        $request['file']->store(public_path('/files/users'.$user->id), $request['file']);
+        error_log("ashci");
+
+        $newPaper->file = $location;
+        $newPaper->save();
+
+        return $newPaper;
 
 
 //        if ($request['photo']) {

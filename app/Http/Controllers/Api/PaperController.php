@@ -12,7 +12,7 @@ class PaperController extends Controller
     private $paperRepository;
 
     /**
-     * EmployeeController constructor.
+     * PaperController constructor.
      */
     public function __construct(PaperRepositoryInterface $paperRepository)
     {

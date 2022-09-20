@@ -26,3 +26,7 @@ Route::post('users', [\App\Http\Controllers\Api\UserController::class, 'createUs
 
 //papers
 Route::post('papers', [\App\Http\Controllers\Api\PaperController::class, 'storePapers']);
+
+//folder
+Route::get('folders/{folder_id}', [\App\Http\Controllers\Api\FolderController::class, 'getEverythingOfFolder']);
+Route::post('folders', [\App\Http\Controllers\Api\FolderController::class, 'createFolder']);
