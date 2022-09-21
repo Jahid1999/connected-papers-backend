@@ -23,4 +23,9 @@ class FavoriteController extends Controller
 
         return response()->json($paper, 200);
     }
+    public function removeFromFavorite($paper_id, $favorite_id){
+        $paper = $this->favoriteRepository->removeFromFavorite($paper_id, $favorite_id);
+
+        return response()->json($paper, 200);
+    }
 }

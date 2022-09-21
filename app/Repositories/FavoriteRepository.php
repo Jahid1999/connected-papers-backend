@@ -26,4 +26,13 @@ class FavoriteRepository implements FavoriteRepositoryInterface
 
         return $paper;
     }
+
+    public function removeFromFavorite($paper_id, $favorite_id)
+    {
+        // TODO: Implement removeFromFavorite() method.
+        $fav = Favourite::findOrFail($favorite_id);
+        $fav->delete();
+
+        return $fav;
+    }
 }
