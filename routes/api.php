@@ -26,6 +26,7 @@ Route::post('users', [\App\Http\Controllers\Api\UserController::class, 'createUs
 
 //papers
 Route::post('papers', [\App\Http\Controllers\Api\PaperController::class, 'storePapers']);
+Route::post('users/{user_id}/papers/{paper_id}/favorite/add', [\App\Http\Controllers\Api\FavoriteController::class, 'addToFavorite']);
 
 //folder
 Route::get('folders/{folder_id}', [\App\Http\Controllers\Api\FolderController::class, 'getEverythingOfFolder']);

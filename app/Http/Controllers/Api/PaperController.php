@@ -21,5 +21,7 @@ class PaperController extends Controller
 
     public function storePapers(CreatePaperRequest $request){
         $paper = $this->paperRepository->store($request->validated(), $request->file('file'));
+
+        return response()->json($paper, 201);
     }
 }

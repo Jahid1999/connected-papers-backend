@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Repositories\FavoriteRepository;
 use App\Repositories\FolderRepository;
+use App\Repositories\Interfaces\FavoriteRepositoryInterface;
 use App\Repositories\Interfaces\FolderRepositoryInterface;
 use App\Repositories\Interfaces\NoteRepositoryInterface;
 use App\Repositories\Interfaces\PaperRepositoryInterface;
@@ -27,6 +29,7 @@ class AppServiceProvider extends ServiceProvider
             PaperRepositoryInterface::class,
             FolderRepositoryInterface::class,
             NoteRepositoryInterface::class,
+            FavoriteRepositoryInterface::class,
         ];
 
         $implementations = [
@@ -34,6 +37,7 @@ class AppServiceProvider extends ServiceProvider
             PaperRepository::class,
             FolderRepository::class,
             NoteRepository::class,
+            FavoriteRepository::class,
         ];
 
         for ($i = 0; $i < count($interfaces); $i++) {
