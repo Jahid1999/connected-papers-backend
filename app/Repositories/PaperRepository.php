@@ -21,7 +21,7 @@ class PaperRepository implements PaperRepositoryInterface
         $newPaper->author = $request['author'];
         $newPaper->year = Carbon::parse($request['year'])->setTimezone('Asia/Dhaka')->year;
 
-        $location = public_path('/files/user/_' . $user->id .'/'. $request['name']);
+        $location = public_path('/files/user_' . $user->id .'/'. $request['name']);
 
         $file->move(public_path('/files/users_'.$user->id), $request['name'].'.pdf');
 

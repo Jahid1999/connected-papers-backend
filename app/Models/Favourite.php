@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Favourite extends Model
 {
     use HasFactory;
+
+    public function user(){
+        return $this->belongsTo('App\Models\User');
+    }
+    public function paper(){
+        return $this->belongsTo('App\Models\Paper');
+    }
 }

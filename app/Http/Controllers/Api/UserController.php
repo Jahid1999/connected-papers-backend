@@ -56,6 +56,6 @@ class UserController extends ApiController
     }
     public function updateuser(UpdateUserRequest $request){
         $user = $this->userRepository->updateuser($request->validated());
-        return response()->json($user, 201);
+        return response()->json($user, 200);
     }
 }

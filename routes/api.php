@@ -30,6 +30,9 @@ Route::post('papers', [\App\Http\Controllers\Api\PaperController::class, 'storeP
 Route::post('users/{user_id}/papers/{paper_id}/favorite/add', [\App\Http\Controllers\Api\FavoriteController::class, 'addToFavorite']);
 Route::delete('papers/{paper_id}/favorite/{favorite_id}', [\App\Http\Controllers\Api\FavoriteController::class, 'removeFromFavorite']);
 
+//favorite
+Route::get('users/{user_id}/favorites',[\App\Http\Controllers\Api\FavoriteController::class, 'getFavouriteByUserId']);
+
 //folder
 Route::get('folders/{folder_id}', [\App\Http\Controllers\Api\FolderController::class, 'getEverythingOfFolder']);
 Route::post('folders', [\App\Http\Controllers\Api\FolderController::class, 'createFolder']);
@@ -39,4 +42,5 @@ Route::get('papers/{paper_id}/notes', [\App\Http\Controllers\Api\NoteController:
 Route::put('notes', [\App\Http\Controllers\Api\NoteController::class, 'updateNote']);
 Route::post('notes', [\App\Http\Controllers\Api\NoteController::class, 'createNote']);
 Route::delete('delete/notes/{note_id}', [\App\Http\Controllers\Api\NoteController::class, 'deleteNote']);
+
 

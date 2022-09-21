@@ -28,4 +28,10 @@ class FavoriteController extends Controller
 
         return response()->json($paper, 200);
     }
+
+    public function getFavouriteByUserId($user_id) {
+        $papers = $this->favoriteRepository->getFavouriteByUserId($user_id);
+
+        return response()->json($papers, 200);
+    }
 }

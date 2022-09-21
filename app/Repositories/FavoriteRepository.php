@@ -35,4 +35,12 @@ class FavoriteRepository implements FavoriteRepositoryInterface
 
         return $fav;
     }
+
+    public function getFavouriteByUserId($user_id)
+    {
+        // TODO: Implement getFavouriteByUserId() method.
+        $user = User::findOrFail($user_id);
+        $user->load('favorites', 'favorites.paper');
+        return $user;
+    }
 }

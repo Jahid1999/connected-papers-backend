@@ -48,11 +48,9 @@ class User extends Authenticatable
         return $this->hasOne('App\Models\Admin');
     }
 
-    public function employee(){
-        return $this->hasOne('App\Models\Employee');
+    public function favorites(){
+        return $this->hasMany('App\Models\Favourite');
     }
 
-    public function client(){
-        return $this->hasOne('App\Models\Client');
-    }
+
 }
