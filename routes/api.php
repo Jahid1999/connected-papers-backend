@@ -22,6 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('users/login', [\App\Http\Controllers\Api\UserController::class, 'authorizeUserLogin']);
 Route::get('users/{user_id}',[\App\Http\Controllers\Api\UserController::class, 'getUserbyId']);
 Route::put('users/password', [\App\Http\Controllers\Api\UserController::class, 'changePassowrd']);
+Route::put('users', [\App\Http\Controllers\Api\UserController::class, 'updateUser']);
 Route::post('users', [\App\Http\Controllers\Api\UserController::class, 'createUser']);
 
 //papers

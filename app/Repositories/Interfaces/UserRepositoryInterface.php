@@ -10,5 +10,6 @@ interface UserRepositoryInterface
 
     public function changePassword(array $request);
     public function storeUser(array $request);
+    public function updateUser(array $request);
     public function fetchUserById($user_id);
 }

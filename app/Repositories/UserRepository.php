@@ -71,4 +71,19 @@ class UserRepository implements UserRepositoryInterface
 
         return $newUser;
     }
+
+    public function updateUser(array $request)
+    {
+        // TODO: Implement updateUser() method.
+        $user = User::findOrFail($request['id']);
+        if(Hash::check($request['password'], $user->password)){
+            $user->name=$request['name'];
+            $user->email=$request['email'];
+            $user->save();
+        }
+        else {
+            return "Password did not matched";
+        }
+        return $user;
+    }
 }

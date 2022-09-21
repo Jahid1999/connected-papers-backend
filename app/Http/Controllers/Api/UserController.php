@@ -6,6 +6,7 @@ use App\Http\Controllers\ApiController;
 use App\Http\Requests\User\CreateUserRequest;
 use App\Http\Requests\User\LoginRequest;
 use App\Http\Requests\User\ChangePasswordRequest;
+use App\Http\Requests\User\UpdateUserRequest;
 use App\Repositories\Interfaces\UserRepositoryInterface;
 use Illuminate\Http\Request;
 
@@ -51,6 +52,10 @@ class UserController extends ApiController
 
     public function createUser(CreateUserRequest $request){
         $user = $this->userRepository->storeUser($request->validated());
+        return response()->json($user, 201);
+    }
+    public function updateuser(UpdateUserRequest $request){
+        $user = $this->userRepository->updateuser($request->validated());
         return response()->json($user, 201);
     }
 }
