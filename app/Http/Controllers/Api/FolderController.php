@@ -26,4 +26,12 @@ class FolderController extends Controller
         $folder = $this->folderRepository->getEverythingOfFolder($folder_id);
         return response()->json($folder, 200);
     }
+
+    public function parseFile(){
+        $parser = new \Smalot\PdfParser\Parser();
+        $pdf = $parser->parseFile('/home/abdullah-al-jahid/Desktop/Codes/spl3/public/files/users_1/PAR-icse.2013.6606626.pdf');
+
+        $text = $pdf->getText();
+        return nl2br($text);
+    }
 }

@@ -36,6 +36,7 @@ Route::get('users/{user_id}/favorites',[\App\Http\Controllers\Api\FavoriteContro
 //folder
 Route::get('folders/{folder_id}', [\App\Http\Controllers\Api\FolderController::class, 'getEverythingOfFolder']);
 Route::post('folders', [\App\Http\Controllers\Api\FolderController::class, 'createFolder']);
+Route::get('extract', [\App\Http\Controllers\Api\FolderController::class, 'parseFile']);
 
 //notes
 Route::get('papers/{paper_id}/notes', [\App\Http\Controllers\Api\NoteController::class, 'getNotesOfSinglePaper']);
