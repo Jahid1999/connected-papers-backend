@@ -22,8 +22,8 @@ class FolderController extends Controller
         $folder = $this->folderRepository->store($request->validated());
         return response()->json($folder, 201);
     }
-    public function getEverythingOfFolder($folder_id){
-        $folder = $this->folderRepository->getEverythingOfFolder($folder_id);
+    public function getEverythingOfFolder($user_id, $folder_id){
+        $folder = $this->folderRepository->getEverythingOfFolder($folder_id, $user_id);
         return response()->json($folder, 200);
     }
 

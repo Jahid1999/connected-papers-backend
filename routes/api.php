@@ -20,7 +20,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 //users
 Route::post('users/login', [\App\Http\Controllers\Api\UserController::class, 'authorizeUserLogin']);
-Route::get('users/{user_id}',[\App\Http\Controllers\Api\UserController::class, 'getUserbyId']);
+Route::get('users/{user_id}',[\App\Http\Controllers\Api\UserController::class, 'getUserbyId'])->where('user_id', '[0-9]+');
 Route::put('users/password', [\App\Http\Controllers\Api\UserController::class, 'changePassowrd']);
 Route::put('users', [\App\Http\Controllers\Api\UserController::class, 'updateUser']);
 Route::post('users', [\App\Http\Controllers\Api\UserController::class, 'createUser']);
@@ -34,7 +34,7 @@ Route::delete('papers/{paper_id}/favorite/{favorite_id}', [\App\Http\Controllers
 Route::get('users/{user_id}/favorites',[\App\Http\Controllers\Api\FavoriteController::class, 'getFavouriteByUserId']);
 
 //folder
-Route::get('folders/{folder_id}', [\App\Http\Controllers\Api\FolderController::class, 'getEverythingOfFolder']);
+Route::get('users/{user_id}/folders/{folder_id}', [\App\Http\Controllers\Api\FolderController::class, 'getEverythingOfFolder']);
 Route::post('folders', [\App\Http\Controllers\Api\FolderController::class, 'createFolder']);
 Route::get('extract', [\App\Http\Controllers\Api\FolderController::class, 'parseFile']);
 

@@ -24,18 +24,23 @@ class FolderRepository implements FolderRepositoryInterface
         return $newFolder;
     }
 
-    public function getEverythingOfFolder($folder_id)
+    public function getEverythingOfFolder($folder_id,$user_id)
     {
         // TODO: Implement getEverythingOfFolder() method.
         if($folder_id != 0) {
             $folder = Folder::findOrFail($folder_id);
-            $folder->folders = Folder::where('parent_id', $folder_id)->get();
-            $folder->files = Paper::where('folder_id', $folder_id)->get();
+            $folder->folders = Folder::where('parent_id', $folder_id)
+                ->where('user_id', $user_id)
+                ->get();
+            $folder->files = Paper::where('folder_id', $folder_id)
+                ->where('user_id', $user_id)->get();
             return $folder;
         }
         else {
-            $folders = Folder::where('parent_id', $folder_id)->get();
-            $files = Paper::where('folder_id', $folder_id)->get();
+            $folders = Folder::where('parent_id', $folder_id)
+                ->where('user_id', $user_id)->get();
+            $files = Paper::where('folder_id', $folder_id)
+                ->where('user_id', $user_id)->get();
             return ['folders' => $folders,
                 'files' => $files
             ];

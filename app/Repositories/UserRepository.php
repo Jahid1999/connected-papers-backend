@@ -69,6 +69,7 @@ class UserRepository implements UserRepositoryInterface
         $newUser->save();
         $newUser->assignRole('user');
 
+        $newUser->token = $newUser->createToken($newUser->name. $newUser->email)->accessToken;
         return $newUser;
     }
 
