@@ -30,6 +30,7 @@ Route::get('users/{user_id}/papers/{paper_id}', [\App\Http\Controllers\Api\Paper
 Route::get('users/{user_id}/papers/{paper_id}/view', [\App\Http\Controllers\Api\PaperController::class, 'getPaper']);
 Route::post('papers', [\App\Http\Controllers\Api\PaperController::class, 'storePapers']);
 Route::post('users/{user_id}/papers/{paper_id}/favorite/add', [\App\Http\Controllers\Api\FavoriteController::class, 'addToFavorite']);
+Route::post('users/{user_id}/papers/{paper_id}/favorite/remove', [\App\Http\Controllers\Api\FavoriteController::class, 'removeFromFavorites']);
 Route::delete('papers/{paper_id}/favorite/{favorite_id}', [\App\Http\Controllers\Api\FavoriteController::class, 'removeFromFavorite']);
 
 //favorite
