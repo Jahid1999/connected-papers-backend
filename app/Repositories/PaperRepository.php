@@ -31,4 +31,12 @@ class PaperRepository implements PaperRepositoryInterface
         return $newPaper;
 
     }
+
+    public function getSinglePaper($user_id, $paper_id){
+        $paper = Paper::where('user_id', $user_id)
+            -> where('id', $paper_id)
+            ->get();
+
+        return $paper;
+    }
 }

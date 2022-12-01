@@ -26,6 +26,8 @@ Route::put('users', [\App\Http\Controllers\Api\UserController::class, 'updateUse
 Route::post('users', [\App\Http\Controllers\Api\UserController::class, 'createUser']);
 
 //papers
+Route::get('users/{user_id}/papers/{paper_id}', [\App\Http\Controllers\Api\PaperController::class, 'getSinglePaper']);
+Route::get('users/{user_id}/papers/{paper_id}/view', [\App\Http\Controllers\Api\PaperController::class, 'getPaper']);
 Route::post('papers', [\App\Http\Controllers\Api\PaperController::class, 'storePapers']);
 Route::post('users/{user_id}/papers/{paper_id}/favorite/add', [\App\Http\Controllers\Api\FavoriteController::class, 'addToFavorite']);
 Route::delete('papers/{paper_id}/favorite/{favorite_id}', [\App\Http\Controllers\Api\FavoriteController::class, 'removeFromFavorite']);
