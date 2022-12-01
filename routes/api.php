@@ -29,10 +29,12 @@ Route::post('users', [\App\Http\Controllers\Api\UserController::class, 'createUs
 Route::get('papers', [\App\Http\Controllers\Api\PaperController::class, 'getPapers']);
 Route::get('users/{user_id}/papers/{paper_id}', [\App\Http\Controllers\Api\PaperController::class, 'getSinglePaper']);
 Route::get('users/{user_id}/papers/{paper_id}/view', [\App\Http\Controllers\Api\PaperController::class, 'getPaper']);
+Route::get('users/{user_id}/papers/{paper_id}/download', [\App\Http\Controllers\Api\PaperController::class, 'downloadPaper']);
 Route::post('papers', [\App\Http\Controllers\Api\PaperController::class, 'storePapers']);
 Route::post('users/{user_id}/papers/{paper_id}/favorite/add', [\App\Http\Controllers\Api\FavoriteController::class, 'addToFavorite']);
 Route::post('users/{user_id}/papers/{paper_id}/favorite/remove', [\App\Http\Controllers\Api\FavoriteController::class, 'removeFromFavorites']);
 Route::delete('papers/{paper_id}/favorite/{favorite_id}', [\App\Http\Controllers\Api\FavoriteController::class, 'removeFromFavorite']);
+Route::delete('papers/{paper_id}', [\App\Http\Controllers\Api\PaperController::class, 'removePaper']);
 
 //favorite
 Route::get('users/{user_id}/favorites',[\App\Http\Controllers\Api\FavoriteController::class, 'getFavouriteByUserId']);

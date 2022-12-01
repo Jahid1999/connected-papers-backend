@@ -37,7 +37,7 @@ class UserRepository implements UserRepositoryInterface
 
     public function changePassword(array $request)
     {
-        $user = User::where('phone', $request['phone'])->firstOrFail();
+        $user = User::where('email', $request['email'])->firstOrFail();
         if(!$user || !Hash::check($request['old_password'], $user->password)){
             return null;
         }

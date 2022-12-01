@@ -13,8 +13,7 @@ class ChangePasswordRequest extends FormRequest
      */
     public function authorize()
     {
-        $user = auth()->guard('api')->user();
-        return $user != null && $this->has('phone') && $this->phone == $user->phone;
+        return true;
     }
 
     /**
@@ -25,7 +24,7 @@ class ChangePasswordRequest extends FormRequest
     public function rules()
     {
         return [
-            'phone' => 'required',
+            'email' => 'required',
             'old_password' => 'required',
             'password' => 'required| min: 8| confirmed'
         ];
