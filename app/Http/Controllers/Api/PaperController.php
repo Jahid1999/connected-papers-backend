@@ -31,6 +31,10 @@ class PaperController extends Controller
         $location = public_path('/files/users_'.$user_id.'/'. $paper->name . '.pdf');
         return response()->file($location);
     }
+    public function getPapers() {
+        $papers = Paper::where('is_public', 1)->get();
+        return response()->json($papers, 200);
+    }
 
     public function getSinglePaper($user_id, $paper_id){
         $paper = $this->paperRepository->getSinglePaper($user_id, $paper_id);

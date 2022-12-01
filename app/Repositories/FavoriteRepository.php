@@ -56,7 +56,9 @@ class FavoriteRepository implements FavoriteRepositoryInterface
         // TODO: Implement getFavouriteByUserId() method.
 
         $user = User::findOrFail($user_id);
-        $user->load('favorites', 'favorites.paper');
-        return $user;
+        $favs = Paper::where('user_id', $user->id)
+            ->where('is_fav', 1)
+            ->get();
+        return $favs;
     }
 }
