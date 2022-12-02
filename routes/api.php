@@ -38,6 +38,8 @@ Route::delete('papers/{paper_id}', [\App\Http\Controllers\Api\PaperController::c
 
 //favorite
 Route::get('users/{user_id}/favorites',[\App\Http\Controllers\Api\FavoriteController::class, 'getFavouriteByUserId']);
+// search
+Route::get('search/{query}',[\App\Http\Controllers\Api\FavoriteController::class, 'search']);
 
 //folder
 Route::get('users/{user_id}/folders/{folder_id}', [\App\Http\Controllers\Api\FolderController::class, 'getEverythingOfFolder']);

@@ -39,4 +39,11 @@ class FavoriteController extends Controller
 
         return response()->json($papers, 200);
     }
+
+    public function search($query){
+        $client = new \GuzzleHttp\Client();
+        $resp = $client->get("https://serpapi.com/search.json?engine=google_scholar&q=${query}&api_key=704b6af03365473c7065b7df14d9d0cd95842350abd2dd745f7d51bbaee6d92f");
+
+        return $resp->getBody();
+    }
 }
