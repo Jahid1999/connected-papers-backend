@@ -19,7 +19,7 @@ class PaperRepository implements PaperRepositoryInterface
         $newPaper->folder_id = $request['folder_id'];
         $newPaper->name = $request['name'];
         $newPaper->author = $request['author'];
-        $newPaper->year = Carbon::parse($request['year'])->setTimezone('Asia/Dhaka')->year;
+        $newPaper->year = $request['year'];
 
         $location = public_path('/files/user_' . $user->id .'/'. $request['name']);
 

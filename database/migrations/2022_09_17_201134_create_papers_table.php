@@ -19,9 +19,10 @@ class CreatePapersTable extends Migration
             $table->unsignedBigInteger('folder_id');
             $table->integer('is_fav')->default(0);
             $table->integer('is_public')->default(0);
+            $table->integer('has_graph')->default(0);
             $table->string('name');
             $table->string('author')->nullable();
-            $table->year('year')->nullable();
+            $table->string('year')->nullable();
             $table->string('file');
             $table->timestamps();
 
