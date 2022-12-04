@@ -34,4 +34,9 @@ class FolderController extends Controller
         $text = $pdf->getText();
         return nl2br($text);
     }
+
+    public function deleteFolder($folder_id){
+        $folder = $this->folderRepository->deleteFolder($folder_id);
+        return response()->json($folder, 200);
+    }
 }

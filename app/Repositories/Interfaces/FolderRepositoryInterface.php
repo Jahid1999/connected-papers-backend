@@ -8,4 +8,5 @@ interface FolderRepositoryInterface
 {
     public function store(array $request);
     public function getEverythingOfFolder($folder_id, $user_id);
+    public function deleteFolder($folder_id);
 }

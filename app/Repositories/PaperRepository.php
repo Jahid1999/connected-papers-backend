@@ -20,6 +20,8 @@ class PaperRepository implements PaperRepositoryInterface
         $newPaper->name = $request['name'];
         $newPaper->author = $request['author'];
         $newPaper->year = $request['year'];
+        if($request['is_public'] == true)
+            $newPaper->is_public = 1;
 
         $location = public_path('/files/user_' . $user->id .'/'. $request['name']);
 
@@ -27,6 +29,9 @@ class PaperRepository implements PaperRepositoryInterface
 
         $newPaper->file = $location;
         $newPaper->save();
+
+        $user->total_doc_uploaded +=1;
+        $user->save();
 
         return $newPaper;
 

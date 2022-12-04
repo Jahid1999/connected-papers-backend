@@ -47,4 +47,8 @@ class FolderRepository implements FolderRepositoryInterface
         }
 
     }
+    public function deleteFolder($folder_id)
+    {
+        // TODO: Implement deleteFolder() method.
+    }
 }

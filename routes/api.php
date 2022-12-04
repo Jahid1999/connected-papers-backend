@@ -47,6 +47,7 @@ Route::get('graph/{file_name}',[\App\Http\Controllers\Api\FavoriteController::cl
 Route::get('users/{user_id}/folders/{folder_id}', [\App\Http\Controllers\Api\FolderController::class, 'getEverythingOfFolder']);
 Route::post('folders', [\App\Http\Controllers\Api\FolderController::class, 'createFolder']);
 Route::get('extract', [\App\Http\Controllers\Api\FolderController::class, 'parseFile']);
+Route::delete('folders/{folder_id}', [\App\Http\Controllers\Api\FolderController::class, 'deleteFolder']);
 
 //notes
 Route::get('papers/{paper_id}/notes', [\App\Http\Controllers\Api\NoteController::class, 'getNotesOfSinglePaper']);

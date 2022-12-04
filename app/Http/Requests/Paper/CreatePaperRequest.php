@@ -30,6 +30,7 @@ class CreatePaperRequest extends FormRequest
             'author' => 'sometimes',
             'year' => 'sometimes',
             'file' => 'required',
+            'is_public' => 'required'
         ];
     }
 }
