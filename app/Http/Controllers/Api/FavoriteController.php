@@ -51,10 +51,11 @@ class FavoriteController extends Controller
 
     public function generateGraph(){
         $graph = new Graph();
-        $graph->paper_id = 17;
+        $graph->paper_id = 11;
 
-        $papers=['BSSE_1030.pdf', '1030_cv_Abdullah-Al-Jahid.pdf', 'CoCoNuT.pdf', 'FixMinerpdf.pdf', 'DeepFix.pdf','GenProg.pdf' , 'PAR.pdf' , 'DLFix.pdf'];
-        $score = [0.1997368161405509, 0.2899368535510553, 0.9805168161405509, 0.9801368535510553, 0.9604810668052068, 0.9633309069903235, 0.9145520773143495, 0.4957995301927595];
+        $papers=["CoCoNuT","FixMinerpdf","DeepFix","Smells","GenProg","PAR","DLFix","LSRC","StaticAPR","ARP Deductive Verification","CV"];
+        $score = [0.6805168161405509,0.9801368535510553,0.6904810668052068
+            ,0.295383584014269,0.6633309069903235,0.9145520773143495,0.4957995301927595,0.7739842150924817,0.9904161202556029,0.8733968617729362,0.2827754807287843];
 
         $graph->graph_data = json_encode(["papers"=>$papers, "scores" => $score, "source" => "TBar"]);
 
@@ -65,10 +66,18 @@ class FavoriteController extends Controller
 
     public function getGraph($file_name){
         $paper = Paper::where('name', $file_name)->firstOrFail();
-        $graph = Graph::where('paper_id', $paper->id)->firstOrFail();
+        $graph = Graph::where('paper_id', $paper->id)->first();
 
-        $graph->graph_data = json_decode($graph->graph_data);
+        if($graph){
+            $graph->graph_data = json_decode($graph->graph_data);
 
-        return response()->json($graph, 200);
+            return response()->json($graph, 200);
+        }
+        else{
+            $client = new \GuzzleHttp\Client();
+            $resp = $client->get('http://20e8-34-91-98-159.ngrok.io/graph/'.$file_name);
+            return response()->json($resp, 200);
+        }
+
     }
 }

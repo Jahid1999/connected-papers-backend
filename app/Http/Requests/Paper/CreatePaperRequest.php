@@ -14,6 +14,7 @@ class CreatePaperRequest extends FormRequest
     public function authorize()
     {
         return true;
+
     }
 
     /**
@@ -29,7 +30,7 @@ class CreatePaperRequest extends FormRequest
             'name' => 'required',
             'author' => 'sometimes',
             'year' => 'sometimes',
-            'file' => 'required',
+            'file' => 'required | max:20480',
             'is_public' => 'required'
         ];
     }
